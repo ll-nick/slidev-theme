@@ -80,6 +80,27 @@ class: "text-center"
 [Documentation](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
 
 ---
+layout: default
+class: nll-light
+---
+
+# Light Mode Slide
+
+This slide uses `class: nll-light` in its frontmatter to override to Catppuccin Latte,
+regardless of the global dark/light setting.
+
+- Works independently of the `d` key toggle
+- Other slides remain in dark mode (Catppuccin Mocha)
+- **Bold**, _italic_, and `inline code` all adapt
+
+```ts
+// Code blocks also pick up the light theme
+function greet(name: string): string {
+  return `Hello, ${name}!`
+}
+```
+
+---
 layout: panels-highlight
 images:
   - /mock-1.svg
