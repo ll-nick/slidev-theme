@@ -1,50 +1,112 @@
 # slidev-theme-nll
 
-[![NPM version](https://img.shields.io/npm/v/slidev-theme-nll?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-theme-nll)
-
-A (...) theme for [Slidev](https://github.com/slidevjs/slidev).
-
-<!--
-  Learn more about how to write a theme:
-  https://sli.dev/guide/write-theme.html
---->
-
-<!--
-  run `npm run dev` to check out the slides for more details of how to start writing a theme
--->
-
-<!--
-  Put some screenshots here to demonstrate your theme
-
-  Live demo: [...]
--->
+My personal  [Slidev](https://github.com/slidevjs/slidev) theme.
+It uses [Catppuccin](https://github.com/catppuccin/catppuccin)-flavoured colours and has a few custom layouts and keybindings.
+Default palette is **Mocha** (dark). Pressing `d` during a presentation switches globally to **Latte** (light).
 
 ## Install
 
-Add the following frontmatter to your `slides.md`. Start Slidev then it will prompt you to install the theme automatically.
+Add the theme as a local dependency in your presentation's `package.json` (it is currently not published to npm, but you can link it locally by path):
 
-<pre><code>---
-theme: <b>nll</b>
----</code></pre>
+```json
+{
+  "dependencies": {
+    "slidev-theme-nll": "file:../path/to/slidev-theme-nll"
+  }
+}
+```
 
-Learn more about [how to use a theme](https://sli.dev/guide/theme-addon#use-theme).
+Then run `npm install` (or `pnpm install`) and reference it in your headmatter:
+
+```yaml
+---
+theme: nll
+---
+```
 
 ## Layouts
 
-This theme provides the following layouts:
+On top of the [built-in Slidev layouts](https://sli.dev/builtin/layouts) this theme provides:
 
-> TODO:
+### `panels-highlight`
 
-## Components
+Full-bleed diagonal multi-panel layout. Panels can expand on click to highlight one image.
 
-This theme provides the following components:
+```yaml
+---
+layout: panels-highlight
+images:
+  - /image-a.png
+  - /image-b.png
+  - /image-c.png
+offsets:        # CSS object-position per panel
+  - '50% 30%'
+  - '50% 50%'
+  - '50% 20%'
+highlighted: 2  # 1-based; panel 2 expands on click. Omit for static equal split.
+---
+```
 
-> TODO:
+| Prop            | Type       | Default                        | Description                                         |
+| --------------- | ---------- | ------------------------------ | --------------------------------------------------- |
+| `images`        | `string[]` | `[]`                           | Image URLs, one per panel                           |
+| `offsets`       | `string[]` | `[]`                           | CSS `object-position` per panel                     |
+| `highlighted`   | `number`   | `null`                         | 1-based index of panel to expand on click           |
+| `expandedWidth` | `number`   | `60`                           | % of slide width given to the highlighted panel     |
+| `slant`         | `number`   | `5`                            | Diagonal slant in slide-% units                     |
+| `accentColor`   | `string`   | `var(--slidev-theme-primary)`  | Divider line colour                                 |
 
-## Contributing
+## Keybindings
 
-- `npm install`
-- `npm run dev` to start theme preview of `example.md`
-- Edit the `example.md` and style to see the changes
-- `npm run export` to generate the preview PDF
-- `npm run screenshot` to generate the preview PNG
+This theme adds vim-style navigation on top of Slidev's defaults:
+
+| Key | Action |
+|-----|--------|
+| `l` | Next animation or slide |
+| `h` | Previous animation or slide |
+| `j` | Next slide (skip animations) |
+| `k` | Previous slide (skip animations) |
+
+## Fonts
+
+The theme sets **Nunito Sans** (sans-serif) and **Fira Code** (monospace) as defaults. Override in your headmatter:
+
+```yaml
+---
+fonts:
+  sans: Inter
+  mono: JetBrains Mono
+---
+```
+
+## Development
+
+```bash
+# Preview example.md with hot reload
+mise run dev
+
+# Export the example deck to PDF
+mise run export
+```
+
+Edit `example.md` to exercise layouts, `styles/layout.css` for colours, and `setup/shortcuts.ts` for keybindings.
+
+## Color modes
+
+### Global toggle
+
+Press `d` during a presentation (or click the sun/moon icon in the navigation bar) to toggle between Catppuccin **Mocha** (dark) and **Latte** (light) for the entire deck.
+
+### Per-slide light mode
+
+Add `class: nll-light` to any slide's frontmatter to force that slide into Catppuccin Latte, independently of the global toggle:
+
+```yaml
+---
+class: nll-light
+---
+
+# This slide is always light
+
+Even when the rest of the deck is in dark mode.
+```
