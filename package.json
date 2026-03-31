@@ -2,6 +2,7 @@
   "name": "slidev-theme-nll",
   "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "keywords": [
     "slidev-theme",
     "slidev"
