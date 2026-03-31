@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#3a1e1e"/>
+  <rect x="50" y="50" width="700" height="500" rx="12" fill="#5a2a2a" opacity="0.6"/>
+  <polygon points="400,100 600,450 200,450" fill="#f38ba8" opacity="0.3"/>
+  <polygon points="400,160 540,400 260,400" fill="#f38ba8" opacity="0.3"/>
+  <text x="400" y="530" font-family="sans-serif" font-size="36" fill="#cdd6f4" text-anchor="middle">Scene C</text>
+  <circle cx="150" cy="300" r="50" fill="#fab387" opacity="0.25"/>
+  <circle cx="650" cy="200" r="70" fill="#fab387" opacity="0.2"/>
+</svg>

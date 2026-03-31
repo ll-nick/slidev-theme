@@ -78,3 +78,16 @@ class: "text-center"
 # Learn More
 
 [Documentation](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+
+---
+layout: panels-highlight
+images:
+  - /mock-1.svg
+  - /mock-2.svg
+  - /mock-3.svg
+offsets:
+  - '50% 30%'
+  - '50% 50%'
+  - '50% 20%'
+highlighted: 2
+---
