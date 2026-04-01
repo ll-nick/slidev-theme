@@ -112,3 +112,17 @@ offsets:
   - '50% 20%'
 highlighted: 2
 ---
+
+---
+
+# Mermaid Diagrams
+
+```mermaid
+flowchart LR
+  A[Request] --> B{Auth?}
+  B -->|Yes| C[Handler]
+  B -->|No| D[401 Unauthorized]
+  C --> E[(Database)]
+  C --> F[Response]
+```
+
