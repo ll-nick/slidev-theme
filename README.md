@@ -83,10 +83,10 @@ fonts:
 
 ```bash
 # Preview example.md with hot reload
-mise run dev
+pnpm dev
 
 # Export the example deck to PDF
-mise run export
+pnpm export
 ```
 
 Edit `example.md` to exercise layouts, `styles/layout.css` for colours, and `setup/shortcuts.ts` for keybindings.
