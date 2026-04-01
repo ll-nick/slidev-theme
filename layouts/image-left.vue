@@ -3,8 +3,9 @@
 
   Props:
     image         string   Image URL
-    imagePosition string   CSS object-position for the image crop (default: '50% 50%')
+    imagePosition string   CSS background-position for the image (default: '50% 50%')
     imageWidth    number   % of slide width for the image column (default: 33)
+    imageScale    number   Scale factor for the image within the panel, <1 zooms out (default: 1)
     slant         number   Diagonal slant in slide-% units (default: 5)
     accentColor   string   Divider line color (default: --slidev-theme-primary)
 -->
@@ -13,6 +14,7 @@ const props = defineProps({
   image:         { default: '' as string },
   imagePosition: { default: '50% 50%' as string },
   imageWidth:    { default: 33 as number },
+  imageScale:    { default: 1 as number },
   slant:         { default: 5 as number },
   accentColor:   { default: 'var(--slidev-theme-primary, #89b4fa)' as string },
 })
@@ -28,13 +30,15 @@ const imgClip = `polygon(0 0, ${topX}% 0, ${botX}% 100%, 0 100%)`
   <div class="slidev-layout image-left-wrap">
     <!-- Image panel, clipped with a slanted right edge -->
     <div class="img-panel" :style="{ clipPath: imgClip }">
-      <img
+      <div
         v-if="image"
-        :src="image"
         class="panel-img"
         :style="{
           width: `${topX + slant}%`,
-          objectPosition: imagePosition,
+          backgroundImage: `url('${image}')`,
+          backgroundSize: imageScale === 1 ? 'cover' : `${imageScale * 100}%`,
+          backgroundPosition: imagePosition,
+          backgroundRepeat: 'no-repeat',
         }"
       />
       <div class="vignette" />
@@ -80,8 +84,6 @@ const imgClip = `polygon(0 0, ${topX}% 0, ${botX}% 100%, 0 100%)`
   left: 0;
   top: 0;
   height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .vignette {
