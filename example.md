@@ -126,3 +126,22 @@ flowchart LR
   C --> F[Response]
 ```
 
+---
+layout: image-left
+image: /mock-1.svg
+imagePosition: '50% 30%'
+---
+
+## Image Left
+
+Content sits in the right two-thirds of the slide, separated from the image by a slanted accent line.
+
+---
+layout: image-right
+image: /mock-2.svg
+imagePosition: '50% 50%'
+---
+
+## Image Right
+
+Content sits in the left two-thirds of the slide, separated from the image by a slanted accent line.
