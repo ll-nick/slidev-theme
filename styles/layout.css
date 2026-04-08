@@ -161,6 +161,18 @@ html.light {
   border-radius: 0.2em;
 }
 
+/* Links */
+.slidev-layout a {
+  color: var(--ctp-blue);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ctp-surface1);
+  transition: border-color 0.2s;
+}
+
+.slidev-layout a:hover {
+  border-bottom-color: var(--ctp-blue);
+}
+
 /* Code blocks */
 .slidev-layout pre { background-color: var(--ctp-surface0) !important; }
 
