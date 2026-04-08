@@ -1,5 +1,5 @@
 <template>
-  <div class="slide-number">
+  <div v-if="$nav.currentPage !== 1" class="slide-number">
     {{ $nav.currentPage }}
   </div>
 </template>
